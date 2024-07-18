@@ -1,0 +1,9 @@
+# 모든 파일에 대해 LF를 사용하도록 설정
+* text=auto eol=lf
+
+# 특정 파일에 대해 CRLF를 사용하도록 설정
+*.bat text eol=crlf
+
+# TypeScript 파일에 대해 LF를 사용하도록 설정
+*.ts text eol=lf
+*.tsx text eol=lf
