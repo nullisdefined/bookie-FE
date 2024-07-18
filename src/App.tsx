@@ -1,19 +1,22 @@
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import { GlobalStyle } from "./style/global";
-import { ThemeProvider } from "styled-components";
-import { dark, light } from "./style/theme";
+import { getTheme, ThemeName } from "./style/theme";
 import ThemeSwitcher from "./components/header/ThemeSwitcher";
+import { useContext, useState } from "react";
+import { BookieThemeProvider, ThemeContext } from "./context/themeContext";
+import { ThemeProvider } from "styled-components";
 
 function App() {
+  const { themeName, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <ThemeProvider theme={dark}>
-      <GlobalStyle themeName="light" />
+    <BookieThemeProvider>
       <ThemeSwitcher />
       <Layout>
         <Home />
       </Layout>
-    </ThemeProvider>
+    </BookieThemeProvider>
   );
 }
 
