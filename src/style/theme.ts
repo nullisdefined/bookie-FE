@@ -1,9 +1,43 @@
 export type ThemeName = "light" | "dark";
-type ColorKey = "primary" | "background" | "secondary" | "third";
+
+export type ColorKey =
+  | "primary"
+  | "background"
+  | "secondary"
+  | "third"
+  | "border"
+  | "text";
+
+export type HeadingSize = "large" | "medium" | "small";
+
+export type ButtonSize = "Large" | "Medium" | "Small";
+
+export type ButtonSchema = "primary" | "normal";
 
 interface Theme {
   name: ThemeName;
   color: Record<ColorKey, string>;
+  heading: {
+    [key in HeadingSize]: {
+      fontSize: string;
+      fontWeight: number;
+    };
+  };
+  button: {
+    [key in ButtonSize]: {
+      fontSize: string;
+      padding: string;
+    };
+  };
+  buttonSchema: {
+    [key in ButtonSchema]: {
+      color: string;
+      backgroundColor: string;
+    };
+  };
+  borderRadius: {
+    default: string;
+  };
 }
 
 export const light: Theme = {
@@ -13,16 +47,62 @@ export const light: Theme = {
     background: "lightgrey",
     secondary: "deepskyblue",
     third: "deepgreen",
+    border: "lightgrey",
+    text: "black",
+  },
+  heading: {
+    large: {
+      fontSize: "24px",
+      fontWeight: 700,
+    },
+    medium: {
+      fontSize: "18px",
+      fontWeight: 500,
+    },
+    small: {
+      fontSize: "12px",
+      fontWeight: 300,
+    },
+  },
+  button: {
+    Large: {
+      fontSize: "18px",
+      padding: "10px 20px",
+    },
+    Medium: {
+      fontSize: "14px",
+      padding: "8px 16px",
+    },
+    Small: {
+      fontSize: "12px",
+      padding: "6px 12px",
+    },
+  },
+  buttonSchema: {
+    primary: {
+      color: "white",
+      backgroundColor: "midnightblue",
+    },
+    normal: {
+      color: "black",
+      backgroundColor: "lightgrey",
+    },
+  },
+  borderRadius: {
+    default: "4px",
   },
 };
 
 export const dark: Theme = {
+  ...light,
   name: "dark",
   color: {
     primary: "coral",
     background: "midnightblue",
     secondary: "darkblue",
     third: "darkgreen",
+    border: "lightgrey",
+    text: "black",
   },
 };
 
